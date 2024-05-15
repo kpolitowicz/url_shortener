@@ -2,7 +2,6 @@
 
 ## TODO
 
-* change the port to 8080!
 * setup docker
 * implement requirements
 * profit!
@@ -40,4 +39,4 @@ Clone and set up the app:
 * `git clone https://github.com/kpolitowicz/url_shortener.git`
 * `cd url_shortener`
 * `mix setup`
-* `mix phx.server` to test http://localhost:4000
+* `mix phx.server` to test http://localhost:8080
