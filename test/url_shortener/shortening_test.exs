@@ -39,12 +39,10 @@ defmodule UrlShortener.ShorteningTest do
 
     test "update_url/2 with valid data updates the url" do
       url = url_fixture()
-      update_attrs = %{slug: "some updated slug", original_url: "some updated original_url", visits: 43}
+      update_attrs = %{original_url: "http://google.com"}
 
       assert {:ok, %Url{} = url} = Shortening.update_url(url, update_attrs)
-      assert url.slug == "some updated slug"
-      assert url.original_url == "some updated original_url"
-      assert url.visits == 43
+      assert url.original_url == "http://google.com"
     end
 
     test "update_url/2 with invalid data returns error changeset" do

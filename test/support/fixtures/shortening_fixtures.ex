@@ -11,9 +11,7 @@ defmodule UrlShortener.ShorteningFixtures do
     {:ok, url} =
       attrs
       |> Enum.into(%{
-        original_url: "some original_url",
-        slug: "some slug",
-        visits: 42
+        original_url: "https://www.google.com/"
       })
       |> UrlShortener.Shortening.create_url()
 

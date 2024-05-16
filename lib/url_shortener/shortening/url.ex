@@ -2,6 +2,11 @@ defmodule UrlShortener.Shortening.Url do
   use Ecto.Schema
   import Ecto.Changeset
 
+  # Only basic http/https protocol validation is covered for now.
+  # If need be this can be adjusted to emerging requirement, e.g other protocols
+  # or even full URI RFC spec.
+  @valid_url_regex ~r/^https?:\/\//
+
   schema "urls" do
     field :slug, :string
     field :original_url, :string
@@ -10,14 +15,13 @@ defmodule UrlShortener.Shortening.Url do
     timestamps(type: :utc_datetime)
   end
 
-  # TODO: add URL validation to original_url
   # TODO: do we need to cast unused attrs?
-  # TODO: add slug generation to create_url
   @doc false
   def changeset(url, attrs) do
     url
     |> cast(attrs, [:slug, :original_url, :visits])
     |> validate_required([:original_url])
+    |> validate_format(:original_url, @valid_url_regex)
   end
 
   @doc false
