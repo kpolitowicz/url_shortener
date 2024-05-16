@@ -17,7 +17,7 @@ defmodule UrlShortenerWeb.UrlControllerTest do
   describe "new url" do
     test "renders form", %{conn: conn} do
       conn = get(conn, ~p"/urls/new")
-      assert html_response(conn, 200) =~ "New Url"
+      assert html_response(conn, 200) =~ "Shorten a long link"
     end
   end
 
@@ -32,9 +32,10 @@ defmodule UrlShortenerWeb.UrlControllerTest do
       assert html_response(conn, 200) =~ "Url #{id}"
     end
 
+    # TODO: change this to test original_url validation (TBA)
     test "renders errors when data is invalid", %{conn: conn} do
       conn = post(conn, ~p"/urls", url: @invalid_attrs)
-      assert html_response(conn, 200) =~ "New Url"
+      assert html_response(conn, 200) =~ "Shorten a long link"
     end
   end
 
