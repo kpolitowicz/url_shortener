@@ -1,0 +1,25 @@
+services:
+  db:
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: url_shortener
+      POSTGRES_HOST_AUTH_METHOD: trust
+    image: 'postgres:16-alpine'
+    restart: always
+    volumes:
+      - 'pgdata:/var/lib/postgresql/data'
+  web:
+    build: .
+    depends_on:
+      - db
+    environment:
+      MIX_ENV: prod
+      PORT: 8080
+      DATABASE_URL: postgres://postgres:postgres@db:5432/url_shortener
+      SECRET_KEY_BASE: localdevmustbeatleast64characterslongpaddingpaddingpaddingpaddingpaddingpaddingpaddingpaddingpaddingpaddingpaddingpaddingpadding
+    ports:
+      - '8080:8080'
+volumes:
+  pgdata:
