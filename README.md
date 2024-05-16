@@ -2,16 +2,21 @@
 
 ## TODO
 
-* change the port to 8080!
-* setup docker
 * implement requirements
+* maybe add scripts to test the min load requirements
+* maybe add dev docker setup (via devcontainers or just MIX_ENV=dev)
 * profit!
 
 ## Setup
 
 ### Docker
 
-TBA
+TODO: check if `docker-compose run web "/app/bin/migrate"` is required (after migrations are added)
+
+* Run `docker-compose up -d`
+* Access the app at http://localhost:8080
+
+Note: this boots the app in prod environment.
 
 ### Native (Mac OSX) development
 
@@ -40,4 +45,4 @@ Clone and set up the app:
 * `git clone https://github.com/kpolitowicz/url_shortener.git`
 * `cd url_shortener`
 * `mix setup`
-* `mix phx.server` to test http://localhost:4000
+* `mix phx.server` to test http://localhost:8080
