@@ -3,7 +3,11 @@ defmodule UrlShortenerWeb.UrlControllerTest do
 
   import UrlShortener.ShorteningFixtures
 
-  @create_attrs %{slug: "some slug", original_url: "some original_url", visits: 42}
+  @create_attrs %{
+    original_url:
+      "https://www.google.com/search?q=url+shortener&oq=google+u" <>
+      "&aqs=chrome.0.69i59j69i60l3j0j69i57.1069j0j7&sourceid=chrome&ie=UTF-8"
+  }
   @update_attrs %{slug: "some updated slug", original_url: "some updated original_url", visits: 43}
   @invalid_attrs %{slug: nil, original_url: nil, visits: nil}
 

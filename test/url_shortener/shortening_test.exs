@@ -21,12 +21,16 @@ defmodule UrlShortener.ShorteningTest do
     end
 
     test "create_url/1 with valid data creates a url" do
-      valid_attrs = %{slug: "some slug", original_url: "some original_url", visits: 42}
+      valid_attrs = %{
+        original_url:
+          "https://www.google.com/search?q=url+shortener&oq=google+u" <>
+          "&aqs=chrome.0.69i59j69i60l3j0j69i57.1069j0j7&sourceid=chrome&ie=UTF-8"
+      }
 
       assert {:ok, %Url{} = url} = Shortening.create_url(valid_attrs)
-      assert url.slug == "some slug"
-      assert url.original_url == "some original_url"
-      assert url.visits == 42
+      assert url.slug == "abc"
+      assert url.original_url == valid_attrs[:original_url]
+      assert url.visits == 0
     end
 
     test "create_url/1 with invalid data returns error changeset" do

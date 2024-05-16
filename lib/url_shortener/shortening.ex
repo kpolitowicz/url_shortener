@@ -52,6 +52,7 @@ defmodule UrlShortener.Shortening do
   def create_url(attrs \\ %{}) do
     %Url{}
     |> Url.changeset(attrs)
+    |> Url.generate_slug()
     |> Repo.insert()
   end
 
