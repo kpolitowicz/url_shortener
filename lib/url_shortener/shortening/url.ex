@@ -1,6 +1,7 @@
 defmodule UrlShortener.Shortening.Url do
   use Ecto.Schema
   import Ecto.Changeset
+  alias UrlShortener.Shortening.Slug
 
   # Only basic http/https protocol validation is covered for now.
   # If need be this can be adjusted to emerging requirement, e.g other protocols
@@ -25,7 +26,6 @@ defmodule UrlShortener.Shortening.Url do
 
   @doc false
   def generate_slug(url_changeset) do
-    # TODO: change to dynamic generation
-    put_change(url_changeset, :slug, "abc")
+    put_change(url_changeset, :slug, Slug.generate())
   end
 end

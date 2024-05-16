@@ -62,4 +62,13 @@ defmodule UrlShortener.ShorteningTest do
       assert %Ecto.Changeset{} = Shortening.change_url(url)
     end
   end
+
+  describe "slugs" do
+    alias UrlShortener.Shortening.Slug
+
+    test "generate slug" do
+      slug = Slug.generate()
+      assert slug == "abc"
+    end
+  end
 end
