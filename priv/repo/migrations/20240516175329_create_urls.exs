@@ -3,11 +3,13 @@ defmodule UrlShortener.Repo.Migrations.CreateUrls do
 
   def change do
     create table(:urls) do
-      add :slug, :string
-      add :original_url, :string
-      add :visits, :integer
+      add :slug, :string, null: false
+      add :original_url, :string, null: false
+      add :visits, :integer, null: false, default: 0
 
       timestamps(type: :utc_datetime)
     end
+
+    create unique_index(:urls, [:slug])
   end
 end
