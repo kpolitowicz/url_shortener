@@ -15,11 +15,10 @@ defmodule UrlShortener.Shortening.Url do
     timestamps(type: :utc_datetime)
   end
 
-  # TODO: do we need to cast unused attrs?
   @doc false
   def changeset(url, attrs) do
     url
-    |> cast(attrs, [:slug, :original_url, :visits])
+    |> cast(attrs, [:original_url])
     |> validate_required([:original_url])
     |> validate_format(:original_url, @valid_url_regex)
   end
